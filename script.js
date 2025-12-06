@@ -1,13 +1,10 @@
-// 1. Select elements
 const buttons = document.querySelectorAll('.sound-btn');
 const volumeSlider = document.getElementById('volume-slider');
 const muteBtn = document.getElementById('mute-btn');
 
-// 2. Global Volume State
 let currentVolume = 0.5;
 let isMuted = false;
 
-// 3. Add click listeners
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         const soundFile = button.getAttribute('data-sound');
@@ -15,7 +12,6 @@ buttons.forEach(button => {
     });
 });
 
-// 4. Play Function
 function playSound(fileName) {
     const audio = new Audio(`sounds/${fileName}`);
     if (isMuted) {
@@ -26,7 +22,6 @@ function playSound(fileName) {
     audio.play();
 }
 
-// 5. Volume Slider
 volumeSlider.addEventListener('input', (e) => {
     currentVolume = e.target.value;
     if (isMuted && currentVolume > 0) {
@@ -35,7 +30,6 @@ volumeSlider.addEventListener('input', (e) => {
     }
 });
 
-// 6. Mute Toggle
 muteBtn.addEventListener('click', () => {
     isMuted = !isMuted;
     if (isMuted) {
